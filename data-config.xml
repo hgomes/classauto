@@ -1,0 +1,16 @@
+<dataConfig>
+        <dataSource
+                name = "SemNome"
+                type="JdbcDataSource"
+    driver="com.mysql.jdbc.Driver"
+    url="jdbc:mysql://127.0.0.1:3306/mydb"
+    user="root"
+    password=""/>
+        <document name="variants">
+          <entity name="SELECT_FULL" query="SELECT id, titulo, categoria_id FROM `oferta`;">
+            <field column="id" name='id' />
+            <field column="titulo" name="titulo" /> 
+            <field column="categoria_id" name="categoria_id" /> 
+          </entity>
+    </document>
+</dataConfig>

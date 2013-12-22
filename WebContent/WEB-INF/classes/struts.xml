@@ -1,0 +1,329 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+		<package name="default" extends="struts-default" namespace="/">
+		
+		<action name="categoria" method="showCategory" class="com.classauto.site.action.CategoryAction">
+			<result name="success">/out/category_out.jsp</result>
+			<!-- <result name="search" type="dispatcher">search</result>-->
+			<result name="search" type="redirectAction">search</result>
+		</action>
+		<action name="oferta" method="showOffers" class="com.classauto.site.action.OfferAction">
+			<result name="success">/out/offers_out.jsp</result>
+		</action>
+		<action name="search" method="search" class="com.classauto.site.action.SearchAction">
+			<result name="success">/out/offers_out.jsp</result>
+		</action>
+		
+		<action name="index" method="generator" class="com.classauto.site.action.GeneratorIndexAction">
+		</action>
+		
+		<!-- 
+		<action name="admin" class="br.com.lygiaclark.web.AdminAction" >
+			<result name="success">admin.jsp</result>
+		</action>
+		<action name="login" method="login" class="br.com.lygiaclark.web.UsuarioAction" >
+			<result name="success" type="redirectAction">admin</result>
+			<result name="input">login.jsp</result>
+		</action>
+		<action name="listOperacao" method="listOperacaoByGrupoUsuario" class="br.com.lygiaclark.web.OperacaoAction">
+			<result name="success">listaOperacoes.jsp</result>
+		</action>
+		<action name="listSubSerie" method="listSubSerie" class="br.com.lygiaclark.web.TextoAction">
+			<result name="success"></result>
+		</action>
+		<action name="listGrupoUsuario" method="listGrupoUsuarioByIdUsuario" class="br.com.lygiaclark.web.GrupoUsuarioAction">
+			<result name="success">listaGruposUsuario.jsp</result>
+		</action>
+		
+		<action name="listSerie" method="listSubSerie" class="br.com.lygiaclark.web.TextoAction">
+			<result name="success">serie.jsp</result>
+		</action>
+		
+		<action name="reloadSelectedSubSerie" class="br.com.lygiaclark.web.TextoAction">
+			<result name="success">formTexto.jsp</result>
+		</action>
+		
+		<action name="showForm" method="chooseForm" class="br.com.lygiaclark.web.AdminAction">
+			<result name="success" type="redirectAction">${nextAction}</result>
+			<result name="error">emptyForm.jsp</result>
+		</action>
+		<action name="reloadMenu" class="br.com.lygiaclark.web.AdminAction">
+			<result name="success">selectOperacao.jsp</result>
+		</action>
+		
+		<action name="" class="br.com.lygiaclark.web.TextoAction">
+			<result name="success">formTexto.jsp</result>
+		</action>
+		<action name="" class="br.com.lygiaclark.web.VideoAction">
+			<result name="success">formVideo.jsp</result>
+		</action>
+		<action name="" class="br.com.lygiaclark.web.EntidadeEntidadeAction">
+			<result name="success">formEntidadeEntidade.jsp</result>
+		</action>
+		<action name="imagem" class="br.com.lygiaclark.web.ImagemAction">
+			<result name="success">formImagem.jsp</result>
+		</action>
+		<action name="exposicao" class="br.com.lygiaclark.web.ExposicaoAction">
+			<result name="success">formExposicao.jsp</result>
+		</action>
+		<action name="publicacao" class="br.com.lygiaclark.web.PublicacaoAction">
+			<result name="success">formPublicacao.jsp</result>
+		</action>
+		
+		<action name="video" method="showForm" class="br.com.lygiaclark.web.VideoAction">
+			<result name="success">formVideo.jsp</result>
+		</action>
+		
+		<action name="entidade_entidade" class="br.com.lygiaclark.web.EntidadeEntidadeAction">
+			<result name="success">formEntidadeEntidade.jsp</result>
+		</action>
+		
+		<action name="audio" method="showForm" class="br.com.lygiaclark.web.AudioAction">
+			<result name="success">formAudio.jsp</result>
+		</action>
+		
+		<action name="local" method="showForm" class="br.com.lygiaclark.web.LocalAction">
+			<result name="success">formLocal.jsp</result>
+		</action>
+		<action name="deleteLocal" method="delete" class="br.com.lygiaclark.web.LocalAction">
+			<result name="success">formLocal.jsp</result>
+		</action>
+		<action name="editLocal" method="edit" class="br.com.lygiaclark.web.LocalAction">
+			<result name="success">formLocal.jsp</result>
+		</action>
+		<action name="saveLocal" method="save" class="br.com.lygiaclark.web.LocalAction">
+			<result name="success">formLocal.jsp</result>
+			<result name="input">formLocal.jsp</result>
+		</action>
+		<action name="saveImagem" method="save" class="br.com.lygiaclark.web.ImagemAction">
+			<result name="success">formImagem.jsp</result>
+			<result name="input">formImagem.jsp</result>
+		</action>
+		<action name="saveEntidadeEntidade" method="save" class="br.com.lygiaclark.web.EntidadeEntidadeAction">
+			<result name="success">formEntidadeEntidade.jsp</result>
+			<result name="input">formEntidadeEntidade.jsp</result>
+		</action>
+		<action name="saveAudio" method="save" class="br.com.lygiaclark.web.AudioAction">
+			<result name="success">formAudio.jsp</result>
+			<result name="input">formAudio.jsp</result>
+		</action>
+		<action name="limparFormPublicacao" method="limpar" class="br.com.lygiaclark.web.PublicacaoAction">
+			<result name="success">formPublicacao.jsp</result>
+		</action>
+		<action name="limparFormEntidadeEntidade" method="limpar" class="br.com.lygiaclark.web.EntidadeEntidadeAction">
+			<result name="success">formEntidadeEntidade.jsp</result>
+		</action>
+		<action name="limparFormAudio" method="limpar" class="br.com.lygiaclark.web.AudioAction">
+			<result name="success">formAudio.jsp</result>
+			<result name="input">formAudio.jsp</result>
+		</action>
+		<action name="savePublicacao" method="save" class="br.com.lygiaclark.web.PublicacaoAction">
+			<result name="success">formPublicacao.jsp</result>
+			<result name="input">formPublicacao.jsp</result>
+		</action>
+		<action name="grupo_entidade" method="showForm" class="br.com.lygiaclark.web.GrupoEntidadeAction">
+			<result name="success">formGrupoEntidade.jsp</result>
+		</action>
+		<action name="deleteGrupoEntidade" method="delete" class="br.com.lygiaclark.web.GrupoEntidadeAction">
+			<result name="success">formGrupoEntidade.jsp</result>
+		</action>
+		<action name="editGrupoEntidade" method="edit" class="br.com.lygiaclark.web.GrupoEntidadeAction">
+			<result name="success">formGrupoEntidade.jsp</result>
+		</action>
+		<action name="saveGrupoEntidade" method="save" class="br.com.lygiaclark.web.GrupoEntidadeAction">
+			<result name="success">formGrupoEntidade.jsp</result>
+			<result name="input">formGrupoEntidade.jsp</result>
+		</action>
+		<action name="grupo_usuario" method="showForm" class="br.com.lygiaclark.web.GrupoUsuarioAction">
+			<result name="success">formGrupoUsuario.jsp</result>
+		</action>
+		<action name="deleteGrupoUsuario" method="delete" class="br.com.lygiaclark.web.GrupoUsuarioAction">
+			<result name="success">formGrupoUsuario.jsp</result>
+		</action>
+		<action name="editGrupoUsuario" method="edit" class="br.com.lygiaclark.web.GrupoUsuarioAction">
+			<result name="success">formGrupoUsuario.jsp</result>
+		</action>
+		<action name="saveGrupoUsuario" method="save" class="br.com.lygiaclark.web.GrupoUsuarioAction">
+			<result name="success">formGrupoUsuario.jsp</result>
+			<result name="input">formGrupoUsuario.jsp</result>
+		</action>
+		<action name="operacao" method="showForm" class="br.com.lygiaclark.web.OperacaoAction">
+			<result name="success">formOperacao.jsp</result>
+		</action>
+		<action name="deleteOperacao" method="delete" class="br.com.lygiaclark.web.OperacaoAction">
+			<result name="success">formOperacao.jsp</result>
+		</action>
+		<action name="editOperacao" method="edit" class="br.com.lygiaclark.web.OperacaoAction">
+			<result name="success">formOperacao.jsp</result>
+		</action>
+		<action name="saveOperacao" method="save" class="br.com.lygiaclark.web.OperacaoAction">
+			<result name="success">formOperacao.jsp</result>
+			<result name="input">formOperacao.jsp</result>
+		</action>
+		<action name="permissao" method="showForm" class="br.com.lygiaclark.web.PermissaoAction">
+			<result name="success">formPermissao.jsp</result>
+		</action>
+		<action name="deletePermissao" method="delete" class="br.com.lygiaclark.web.PermissaoAction">
+			<result name="success">formPermissao.jsp</result>
+		</action>
+		<action name="editPermissao" method="edit" class="br.com.lygiaclark.web.PermissaoAction">
+			<result name="success">formPermissao.jsp</result>
+		</action>
+		<action name="savePermissao" method="save" class="br.com.lygiaclark.web.PermissaoAction">
+			<result name="success">formPermissao.jsp</result>
+			<result name="input">formPermissao.jsp</result>
+		</action>
+		<action name="pessoa" method="showForm" class="br.com.lygiaclark.web.PessoaAction">
+			<result name="success">formPessoa.jsp</result>
+		</action>
+		<action name="deletePessoa" method="delete" class="br.com.lygiaclark.web.PessoaAction">
+			<result name="success">formPessoa.jsp</result>
+		</action>
+		<action name="editPessoa" method="edit" class="br.com.lygiaclark.web.PessoaAction">
+			<result name="success">formPessoa.jsp</result>
+		</action>
+		<action name="savePessoa" method="save" class="br.com.lygiaclark.web.PessoaAction">
+			<result name="success">formPessoa.jsp</result>
+			<result name="input">formPessoa.jsp</result>
+		</action>
+		<action name="pertinencia" method="showForm" class="br.com.lygiaclark.web.PertinenciaAction">
+			<result name="success">formPertinencia.jsp</result>
+		</action>
+		<action name="deletePertinencia" method="delete" class="br.com.lygiaclark.web.PertinenciaAction">
+			<result name="success">formPertinencia.jsp</result>
+		</action>
+		<action name="editPertinencia" method="edit" class="br.com.lygiaclark.web.PertinenciaAction">
+			<result name="success">formPertinencia.jsp</result>
+		</action>
+		<action name="savePertinencia" method="save" class="br.com.lygiaclark.web.PertinenciaAction">
+			<result name="success">formPertinencia.jsp</result>
+			<result name="input">formPertinencia.jsp</result>
+		</action>
+		<action name="tipo_valor" method="showForm" class="br.com.lygiaclark.web.TipoValorAction">
+			<result name="success">formTipoValor.jsp</result>
+		</action>
+		<action name="deleteTipoValor" method="delete" class="br.com.lygiaclark.web.TipoValorAction">
+			<result name="success">formTipoValor.jsp</result>
+		</action>
+		<action name="editTipoValor" method="edit" class="br.com.lygiaclark.web.TipoValorAction">
+			<result name="success">formTipoValor.jsp</result>
+		</action>
+		<action name="saveTipoValor" method="save" class="br.com.lygiaclark.web.TipoValorAction">
+			<result name="success">formTipoValor.jsp</result>
+			<result name="input">formTipoValor.jsp</result>
+		</action>
+		<action name="valor" method="showForm" class="br.com.lygiaclark.web.ValorAction">
+			<result name="success">formValor.jsp</result>
+		</action>
+		<action name="deleteValor" method="delete" class="br.com.lygiaclark.web.ValorAction">
+			<result name="success">formValor.jsp</result>
+		</action>
+		<action name="editValor" method="edit" class="br.com.lygiaclark.web.ValorAction">
+			<result name="success">formValor.jsp</result>
+		</action>
+		<action name="saveValor" method="save" class="br.com.lygiaclark.web.ValorAction">
+			<result name="success">formValor.jsp</result>
+			<result name="input">formValor.jsp</result>
+		</action>
+		<action name="texto" method="showForm" class="br.com.lygiaclark.web.TextoAction">
+			<result name="success">formTexto.jsp</result>
+		</action>
+		<action name="deleteTexto" method="delete" class="br.com.lygiaclark.web.TextoAction">
+			<result name="success">formTexto.jsp</result>
+		</action>
+		<action name="editTexto" method="edit" class="br.com.lygiaclark.web.TextoAction">
+			<result name="success">formTexto.jsp</result>
+		</action>
+		<action name="deleteVideo" method="delete" class="br.com.lygiaclark.web.VideoAction">
+			<result name="success">formVideo.jsp</result>
+		</action>
+		<action name="deletePublicacao" method="delete" class="br.com.lygiaclark.web.PublicacaoAction">
+			<result name="success">formPublicacao.jsp</result>
+		</action>
+		<action name="deleteImagem" method="delete" class="br.com.lygiaclark.web.ImagemAction">
+			<result name="success">formImagem.jsp</result>
+		</action>
+		<action name="deleteAudio" method="delete" class="br.com.lygiaclark.web.AudioAction">
+			<result name="success">formAudio.jsp</result>
+		</action>
+		<action name="editVideo" method="edit" class="br.com.lygiaclark.web.VideoAction">
+			<result name="success">formVideo.jsp</result>
+		</action>
+		<action name="editAudio" method="edit" class="br.com.lygiaclark.web.AudioAction">
+			<result name="success">formAudio.jsp</result>
+		</action>
+		<action name="editImagem" method="edit" class="br.com.lygiaclark.web.ImagemAction">
+			<result name="success">formImagem.jsp</result>
+		</action>
+		<action name="editPublicacao" method="edit" class="br.com.lygiaclark.web.PublicacaoAction">
+			<result name="success">formPublicacao.jsp</result>
+		</action>
+		<action name="editTextoByNotacaoNova" method="editByNotacaoNova" class="br.com.lygiaclark.web.TextoAction">
+			<result name="success">formTexto.jsp</result>
+		</action>
+		<action name="editVideoByNotacaoNova" method="editByNotacaoNova" class="br.com.lygiaclark.web.VideoAction">
+			<result name="success">formVideo.jsp</result>
+		</action>
+		<action name="editAudioByNotacaoNova" method="editByNotacaoNova" class="br.com.lygiaclark.web.AudioAction">
+			<result name="success">formAudio.jsp</result>
+		</action>
+		<action name="editImagemByNotacaoNova" method="editByNotacaoNova" class="br.com.lygiaclark.web.ImagemAction">
+			<result name="success">formImagem.jsp</result>
+		</action>
+		<action name="saveTexto" method="save" class="br.com.lygiaclark.web.TextoAction">
+			<result name="success">formTexto.jsp</result>
+			<result name="input">formTexto.jsp</result>
+		</action>
+		<action name="saveVideo" method="save" class="br.com.lygiaclark.web.VideoAction">
+			<result name="success">formVideo.jsp</result>
+			<result name="input">formVideo.jsp</result>
+		</action>
+		<action name="limparForm" method="limpar" class="br.com.lygiaclark.web.TextoAction">
+			<result name="success">formTexto.jsp</result>
+		</action>
+		<action name="limparFormVideo" method="limpar" class="br.com.lygiaclark.web.VideoAction">
+			<result name="success">formVideo.jsp</result>
+		</action>
+		<action name="limparFormImagem" method="limpar" class="br.com.lygiaclark.web.ImagemAction">
+			<result name="success">formImagem.jsp</result>
+		</action>	
+		<action name="usuario" method="showForm" class="br.com.lygiaclark.web.UsuarioAction">
+			<result name="success">formUsuario.jsp</result>
+		</action>
+		<action name="deleteUsuario" method="delete" class="br.com.lygiaclark.web.UsuarioAction">
+			<result name="success">formUsuario.jsp</result>
+		</action>
+		<action name="editUsuario" method="edit" class="br.com.lygiaclark.web.UsuarioAction">
+			<result name="success">formUsuario.jsp</result>
+		</action>
+		<action name="saveUsuario" method="save" class="br.com.lygiaclark.web.UsuarioAction">
+			<result name="success">formUsuario.jsp</result>
+			<result name="input">formUsuario.jsp</result>
+		</action>
+		<action name="searchTexto" method="getByTexto" class="br.com.lygiaclark.web.TextoAction">
+			<result name="success">formTexto.jsp</result>
+			<result name="input">formTexto.jsp</result>
+		</action>
+		<action name="searchAudio" method="getByAudio" class="br.com.lygiaclark.web.AudioAction">
+			<result name="success">formAudio.jsp</result>
+			<result name="input">formAudio.jsp</result>
+		</action>
+		<action name="searchVideo" method="getByVideo" class="br.com.lygiaclark.web.VideoAction">
+			<result name="success">formVideo.jsp</result>
+			<result name="input">formVideo.jsp</result>
+		</action>
+		<action name="searchImagem" method="getByImagem" class="br.com.lygiaclark.web.ImagemAction">
+			<result name="success">formImagem.jsp</result>
+			<result name="input">formImagem.jsp</result>
+		</action>
+		<action name="searchPublicacao" method="getByPublicacao" class="br.com.lygiaclark.web.PublicacaoAction">
+			<result name="success">formPublicacao.jsp</result>
+			<result name="input">formPublicacao.jsp</result>
+		</action>
+		 -->
+		
+	</package>
+</struts>
